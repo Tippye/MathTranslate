@@ -1,0 +1,10 @@
+setuptools~=75.1.0
+appdata~=2.2.1
+mtranslate
+charset-normalizer
+requests
+regex
+tqdm
+openai
+flask
+werkzeug

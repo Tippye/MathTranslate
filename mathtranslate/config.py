@@ -14,7 +14,7 @@ class Config:
     tencent_secret_id_path = 'TENCENT_ID'
     tencent_secret_key_path = 'TENCENT_KEY'
 
-    default_engine_default = 'google'
+    default_engine_default = 'LLM'
     default_language_from_default = 'en'
     default_language_to_default = 'zh-CN'
     default_loading_dir_default = os.path.expanduser("~")
@@ -22,6 +22,7 @@ class Config:
     default_threads_default = 0
     tencent_secret_id_default = None
     tencent_secret_key_default = None
+    api_key = "sk-IsEQZeSUumFPNLKxz16k2Q6uTkOQHC8EBrJt23VqJh6znNHF"  # Kimi API
 
     math_code = 'XMATHX'
     log_file = f'{app_dir}/translate_log'

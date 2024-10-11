@@ -25,16 +25,19 @@ default_end = r'''
 class TextTranslator:
     def __init__(self, engine, language_to, language_from):
         self.engine = engine
+        self.language_to = language_to
+        self.language_from = language_from
         if engine == 'google':
             import mtranslate as translator
         elif engine == 'tencent':
             from mathtranslate.tencent import Translator
-            translator = Translator()
+            translator = Translator(self.language_to, self.language_from)
+        elif engine == 'LLM':
+            from mathtranslate.llm import Translator
+            translator = Translator(self.language_to, self.language_from)
         else:
-            assert False, "engine must be google or tencent"
+            assert False, "engine is unknown"
         self.translator = translator
-        self.language_to = language_to
-        self.language_from = language_from
         self.number_of_calls = 0
         self.tot_char = 0
 

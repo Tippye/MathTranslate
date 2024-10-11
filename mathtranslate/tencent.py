@@ -4,9 +4,11 @@ from .config import config
 
 
 class Translator:
-    def __init__(self):
+    def __init__(self, language_to, language_from):
         self.cred = credential.Credential(config.tencent_secret_id, config.tencent_secret_key)
         self.client = tmt_client.TmtClient(self.cred, 'ap-shanghai')
+        self.language_to = language_to
+        self.language_from = language_from
 
     def is_error_request_frequency(self, e: exception.TencentCloudSDKException):
         code = e.get_code()
@@ -16,6 +18,10 @@ class Translator:
             return False
 
     def translate(self, text, language_to, language_from):
+        if not language_to:
+            language_to = self.language_to
+        if not language_from:
+            language_from = self.language_from
         request = tmt_client.models.TextTranslateRequest()
         request.Source = language_from
         request.Target = language_to
